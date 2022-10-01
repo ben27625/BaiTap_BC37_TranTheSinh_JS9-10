@@ -1,8 +1,8 @@
-// 1, In ra table danh sách sinh viên mới
+// 1, In ra table danh sách nhân viên
 
 // 2, Thêm nhân viên mới
 
-//  3, Tạo đối tượng mới :
+//  3, Tạo đối tượng  :
 // + Tài khoản
 // + Họ tên
 // + Email
@@ -63,4 +63,8 @@
  * Testing
  * 
  */
+
+
+
+
 
