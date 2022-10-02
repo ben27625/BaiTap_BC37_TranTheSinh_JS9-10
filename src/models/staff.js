@@ -1,23 +1,33 @@
 // Cấu trúc thư mục mỗi lớp đối tượng một file
 
-function Staff(id, fullName, dob, email, password, workDay, salary, position, workHours, totalSalary, staffType) {
+function Staff(id, fullName, email, password, datepicker, luongCB, chucvu) {
     this.staffId = id;
     this.fullName = fullName;
-    this.dob = dob;
     this.email = email;
     this.password = password;
-    this.workDay = workDay;
-    this.salary = salary;
-    this.position = position;
-    this.workingHours = workHours;
-    this.totalSalary = totalSalary;
-   
+    this.datepicker = datepicker;
+    this.luongCB = luongCB;
+    this.chucvu = chucvu;
+    this.gioLam = gioLam;
     this.caclSalary = function() {
-        return;
-    }
+        if(this.chucvu === "Sếp") {
+            return this.luongCB * 3;
+        } else if(this.chucvu === "Trưởng phòng") {
+            return this.luongCB * 2;
+        } else if (this.chucvu === "Nhân viên") {
+            return this.luongCB;
+        } else { return;}
+    };
     this.staffType = function() {
-        return;
+        if(this.gioLam >= 192) {
+            return "Xuất sắc";
+        } else if(this.gioLam < 192 && this.gioLam >= 176) {
+            return "Giỏi";
+        } else if(this.gioLam < 176 && this.gioLam >= 160) {
+            return "Khá";
+        }
+        else if(this.gioLam < 160 && this.gioLam >= 0) {
+            return "Trung Bình"; 
+        }
     }
-
-
 }

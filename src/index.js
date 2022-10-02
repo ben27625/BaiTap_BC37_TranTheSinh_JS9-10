@@ -64,6 +64,66 @@
  * 
  */
 
+var staffList = [];
+
+
+
+
+function renderStaff(data) {
+   // log staffList
+   var dataTable = "";
+
+   for(var i = 0 ; i < staffList.length; i++) {
+      var currentStaff = staffList[i];
+      dataTable += `<tr>
+      <th > ${currentStaff.staffId}</th>
+      <th> ${currentStaff.fullName}</th>
+      <th> ${currentStaff.email}</th>
+      <th> ${currentStaff.datepicker}</th>
+      <th> ${currentStaff.chucvu}</th>
+      <th> ${currentStaff.caclSalary()}</th>
+      <th> ${currentStaff.staffType()}</th>
+      
+    </tr>`;
+   }
+
+   document.getElementById("tableDanhSach").innerHTML = dataTable;
+}
+
+
+
+function CreateStaff() {
+   // get input
+   var staffId = document.getElementById("tknv").value;
+   var fullName = document.getElementById("name").value;
+   var email = document.getElementById("email").value;
+   var password = document.getElementById("password").value;
+   var datepicker = document.getElementById("datepicker").value;
+   var luongCB = document.getElementById("luongCB").value;
+   var chucvu = document.getElementById("chucvu").value;
+   var gioLam = document.getElementById("gioLam").value;
+  
+// new staff 
+   var newStaff = new Staff(
+      staffId,
+      fullName,
+      email,
+      password,
+      datepicker,
+      luongCB,
+      chucvu,
+      gioLam,
+
+   );
+   console.log(newStaff);
+
+   // push array 
+   staffList.push(newStaff);
+
+   renderStaff();
+
+}
+
 
 
 
