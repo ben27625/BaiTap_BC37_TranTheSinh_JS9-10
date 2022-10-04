@@ -1,6 +1,6 @@
 // Cấu trúc thư mục mỗi lớp đối tượng một file
 
-function Staff(id, fullName, email, password, datepicker, luongCB, chucvu) {
+function Staff(id, fullName, email, password, datepicker, luongCB, chucvu, gioLam) {
     this.staffId = id;
     this.fullName = fullName;
     this.email = email;
