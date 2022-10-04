@@ -101,7 +101,7 @@ function CreateStaff() {
    renderStaff();
 
    // save to local storage
-
+      setStaff();
 
 
 }
@@ -279,11 +279,12 @@ function checkPosition(val, spanId) {
 // }
 
 function renderStaff(data) {
+   if(!data) data = staffList;
    // log staffList
    var dataTable = "";
 
-   for(var i = 0 ; i < staffList.length; i++) {
-      var currentStaff = staffList[i];
+   for(var i = 0 ; i < data.length; i++) {
+      var currentStaff = data[i];
       dataTable += `<tr>
       <th > ${currentStaff.staffId}</th>
       <th> ${currentStaff.fullName}</th>
@@ -333,7 +334,14 @@ function deleteStaff(staffId) {
 // finde staff
 
 function findById(staffId) {
-   
+   for (var i = 0; i < staffList.length; i++) {
+     
+      if (staffList[i].staffId === staffId) {
+        return i;
+      }
+    }
+  
+    return -1;
 }
 
 // save local storage
@@ -386,14 +394,14 @@ function mapData(dataLocal) {
 // staff search function
 function searchStaff() {
    var keyword = document.querySelector("#searchName").value.toLowerCase().trim();
-
+   console.log(keyword);
   var result = [];
 
   for (var i = 0; i < staffList.length; i++) {
-    var staffId = staffList[i].staffId;
-    var staffName = staffList[i].fullName.toLowerCase();
+    var type = staffList[i].staffType().toLowerCase();
+   
 
-    if (staffId === keyword || staffName.includes(keyword)) {
+    if (type === keyword  ) {
       result.push(staffList[i]);
     }
   }
