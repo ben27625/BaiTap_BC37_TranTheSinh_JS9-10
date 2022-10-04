@@ -67,9 +67,9 @@
 var staffList = [];
 
 function CreateStaff() {
-   // var isFormValid = validateForm();
+   var isFormValid = validateForm();
    
-   // if (!isFormValid) return;
+   if (!isFormValid) return;
    // get input
    var staffId = document.getElementById("tknv").value;
    var fullName = document.getElementById("name").value;
@@ -431,16 +431,45 @@ function getUpdateStaff(staffId) {
    document.getElementById("tknv").value = staff.staffId;
    document.getElementById("name").value = staff.fullName;
    document.getElementById("email").value = staff.email;
+   document.getElementById("password").value = staff.password;
    document.getElementById("datepicker").value = staff.datepicker;
+   document.getElementById("luongCB").value = staff.luongCB;
    document.getElementById("chucvu").value = staff.chucvu;
+   document.getElementById("gioLam").value = staff.gioLam;
+
+   document.getElementById("btnThem").click();
   
+   document.getElementById("tknv").disabled = true;
  
+ }
 
+ function updateStaff() {
+   var staffId = document.getElementById("tknv").value;
+   var fullName = document.getElementById("name").value;
+   var email = document.getElementById("email").value;
    var password = document.getElementById("password").value;
-
+   var datepicker = document.getElementById("datepicker").value;
    var luongCB = document.getElementById("luongCB").value * 1;
+   var chucvu = document.getElementById("chucvu").value;
    var gioLam = document.getElementById("gioLam").value * 1;
- 
+
+   var index = findById(staffId);
+
+   var staff = staffList[index];
+
+   staff.fullName = fullName;
+   staff.email = email;
+   staff.password = password;
+   staff.datepicker = datepicker;
+   staff.luongCB = luongCB;
+   staff.chucvu = chucvu;
+   staff.gioLam = gioLam;
+
+   renderStaff();
+  
+   document.getElementById("tknv").disabled = false;
+
+   document.getElementById("btnThem").click();
  }
 
 
