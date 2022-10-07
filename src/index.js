@@ -142,9 +142,11 @@ function validateForm() {
    isValid &= 
    required(chucvu, "tbChucVu") && checkPosition(chucvu,"tbChucVu");
 
-   // isValid &= 
-   // required(gioLam, "tbGiolam") && check
+   isValid &= 
+   required(gioLam, "tbGiolam") && checkRegEx(gioLam, "tbGiolam", /^([89][0-9]|[1][0-9][0-9]|20[0-0])$/);
 
+   document.getElementsByClassName("sp-thongbao").style.display = "block";
+  
 
 
    return isValid;
@@ -158,7 +160,9 @@ function validateForm() {
 // required
 function required(val, spanId) {
    if (val.length === 0) {
-      document.getElementById(spanId).innerHTML = "*Trường hợp này bắt buộc"
+      document.getElementById(spanId).innerHTML = "*Trường hợp này bắt buộc";
+
+      
       return false;
 
    }
@@ -266,17 +270,17 @@ function checkPosition(val, spanId) {
 
 // Số giờ làm trong tháng 80 - 200 giờ, không để trống
 
-// function check(val, spanId,regEx) {
+function checkRegEx(val, spanId,regEx) {
   
 
-//    if (regEx.test(val)) {
-//       document.getElementById(spanId).innerHTML = "" ;
-//       return true;
-//    }
+   if (regEx.test(val)) {
+      document.getElementById(spanId).innerHTML = "" ;
+      return true;
+   }
 
-//    document.getElementById(spanId).innerHTML = `Số giờ phải từ 80 đến 200 giờ`;
-//    return false;
-// }
+   document.getElementById(spanId).innerHTML = `Số giờ phải từ 80 đến 200 giờ`;
+   return false;
+}
 
 function renderStaff(data) {
    if(!data) data = staffList;
